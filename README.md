@@ -23,3 +23,27 @@ npm install
 ```bash
 npm start
 ```
+
+## Использование
+
+Window
+```js
+const client = new WorkerClient({
+  name: "Moscow",
+  resource: `./moscow.js`,
+});
+client.get("log/3")
+client.post("log", {...data})
+client.put("log/1", {...data})
+client.delete("log/2")
+client.stream("log")
+```
+
+SharedWorker moscow.js
+```js
+const server = new WorkerServer();
+server.get("log", async () => {
+  await timeout(1000); // Нагрузка
+  return [1, 2, 3, 4, 5]; // Результат в виде DTO без поведения
+});
+```
