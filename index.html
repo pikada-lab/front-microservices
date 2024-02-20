@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 1</title>
+  </head>
+  <body>
+    <button id="button1">Отправить /log в Москву</button>
+    <div id="log1">-</div>
+    <button id="button2">Отправить /pi/1000 в Москву</button>
+    <div id="log2">-</div>
+    <button id="button3">Отправить /log в Иркутск</button>
+    <div id="log3">-</div>
+    <script src="/common/timeout.js"></script>
+    <script src="/common/result.js"></script>
+    <script src="/common/worker-client.js"></script> 
+    <script src="/common/repository.js"></script>
+    <script src="./index.js"></script>
+    <style>
+      * {
+        font-family: monospace;
+      }
+      body {
+        background: #000;
+        text-align: center;
+      }
+      button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 16px;
+        color: #888;
+        cursor: pointer;
+        border: 1px solid #888;
+        border-radius: 4px;
+        background: transparent;
+        transition-duration: 0.3s;
+      }
+      button:hover {
+        color: #fff;
+        border-color: #fff;
+      }
+      div {
+        color: #fff;
+        padding: 10px;
+      }
+    </style>
+  </body>
+</html>

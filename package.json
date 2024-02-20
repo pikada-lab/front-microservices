@@ -1,0 +1,17 @@
+{
+  "name": "front-microservices",
+  "version": "1.0.0",
+  "description": "Микросервисы на фронтенде (инфраструктура)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vite",
+    "build": "vite build"
+  },
+  "author": "info@pikada-lab.ru",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.2.4",
+    "vite": "^3.2.3"
+  }
+}
