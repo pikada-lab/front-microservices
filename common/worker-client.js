@@ -154,7 +154,7 @@ class WorkerClient {
   async get(path) {
     if (this.lock) {
       await timeout(100);
-      return this.get(path, data);
+      return this.get(path);
     }
     return new Promise((resolve, reject) => {
       const id = this.getNextId();
@@ -192,7 +192,7 @@ class WorkerClient {
   async delete(path) {
     if (this.lock) {
       await timeout(100);
-      return this.delete(path, data);
+      return this.delete(path);
     }
     return new Promise((resolve, reject) => {
       const id = this.getNextId();

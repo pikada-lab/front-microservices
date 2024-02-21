@@ -14,7 +14,7 @@ class WorkerServer {
       responseChannel.postMessage(result);
       responseChannel.close();
     });
-    globalThis.onconnect = (e) => {
+    globalThis.onconnect = async (e) => {
       e.ports[0].start();
       e.ports[0].postMessage("PENDING_MESSAGE");
     };
@@ -31,13 +31,13 @@ class WorkerServer {
     if (!path) {
       console.warn("NOT GOOD", event.data);
 
-      return Response.failure(id, "Нарушение протокола");
+      return Response.failure(id, 422, "Нарушение протокола");
     }
     const epResult = this.findEndpoint(method, path).map(([res, ep]) => {
       return [res.getProps(new ResoursePath(path)), ep];
     });
     if (epResult.isFailure) {
-      return Response.failure(id, epResult.error);
+      return Response.failure(id, 404, epResult.error);
     }
     try {
       const midleware = epResult.value[1];
@@ -48,7 +48,7 @@ class WorkerServer {
         return Response.success(id, result);
       }
     } catch (ex) {
-      return Response.failure(id, "Ошибка обработки");
+      return Response.failure(id, 500, "Ошибка обработки");
     }
   }
 
